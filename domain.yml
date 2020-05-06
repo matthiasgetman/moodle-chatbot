@@ -1,0 +1,77 @@
+intents:
+  - class_search:
+      use_entities: []
+  - prereq
+  - welcome
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - feeling
+  - mood_unhappy
+  - bot_challenge
+  
+#entities are basically variables
+entities:
+  - class_name
+
+
+#slots are used for the bot to remember entity, such as a name. You can utter these using {name}
+slots:
+  class_name:
+    type: unfeaturized
+    auto_fill: false
+
+forms:
+  - prereq_form
+
+actions:
+  - utter_prereq
+  - utter_welcome
+  - action_class_search
+  - action_open_link
+  - utter_greet
+  - utter_goodbye
+  - utter_affirm
+  - utter_deny
+  - utter_mood_great
+  - utter_feeling
+  - utter_mood_unhappy
+  - utter_bot_challenge
+
+ 
+responses:
+  utter_greet:
+    - text: "Hi! I'm Syllabuddy. I can help you find what you need in your class syllabus. How can I help?"
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/42T7Vgn.png"
+  utter_did_that_help:
+    - text: "Did that help you?"
+  utter_feeling:
+    - text: "I'm doing great, thanks for asking! How are you?"
+  utter_happy:
+    - text: "Great, that's good to hear!"
+  utter_welcome:
+    - text: "You're welcome! Can I help with anything else?"
+    - text: "No worries! What else can I help you with today?"
+  utter_goodbye:
+    - text: "Goodbye!"
+  utter_affirm:
+  - text: "You name it!"
+  
+  utter_deny:
+    - text: "I'm sorry, maybe there's something else I can help with?"
+  utter_iamabot:
+    - text: "I am Syllabuddy, powered by Rasa, and created by Students!"
+  utter_prereq:
+    - text: "Here are the prerequisites for the following class:\n
+             - class_name: {class_name}"
+  utter_ask_class_name:
+    - text: "For which class?"
+    - text: "Can you provide your class name?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
